@@ -1,0 +1,145 @@
+---
+BasedOnStyle: LLVM # LLVM | Google | Chromium | Mozilla | WebKit | Microsoft | GNU | InheritParentConfig
+AccessModifierOffset: -2
+AlignAfterOpenBracket: Align # Align | DontAlign | AlwaysBreak | BlockIndent
+AlignArrayOfStructures: Right # Left | Right | None
+AlignConsecutiveAssignments:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+  AlignCompound: true
+  PadOperators: true
+AlignConsecutiveBitFields:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+AlignConsecutiveDeclarations:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+AlignConsecutiveMacros:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: false
+AlignConsecutiveShortCaseStatements:
+  Enabled: false
+  AcrossEmptyLines: false
+  AcrossComments: false
+  AlignCaseColons: false
+AlignEscapedNewlines: Left # DontAlign | Left | LeftWithLastLine | Right
+AlignOperands: AlignAfterOperator # DontAlign | Align | AlignAfterOperator
+AlignTrailingComments:
+  Kind: Always # Leave | Always | Never
+  OverEmptyLines: 1
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortBlocksOnASingleLine: Empty # Never | Empty | Always
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortCompoundRequirementOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty # None | InlineOnly | Empty | Inline | All
+AllowShortIfStatementsOnASingleLine: Never # Never | WithoutElse | OnlyFirstIf | AllIfsAndElse
+AllowShortLambdasOnASingleLine: Empty # None | Empty | Inline | All
+AllowShortLoopsOnASingleLine: false
+AllowShortNamespacesOnASingleLine: false
+AlwaysBreakBeforeMultilineStrings: false
+BinPackArguments: true
+BinPackParameters: true
+BitFieldColonSpacing: Both # Both | None | Before | After
+BreakAfterAttributes: Never # Always | Leave | Never
+BreakAfterReturnType: None # None | Automatic | ExceptShortType | All | TopLevel | AllDefinitions | TopLevelDefinitions
+BreakBeforeBinaryOperators: All # None | NonAssignment | All
+BreakBeforeBraces: Custom # Attach | Linux | Mozilla | Stroustrup | Allman | Whitesmiths | GNU | WebKit | Custom
+BraceWrapping:
+  AfterCaseLabel: false
+  AfterClass: false
+  AfterControlStatement: Never # Never | MultiLine | Always
+  AfterEnum: false
+  AfterExternBlock: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+  BeforeLambdaBody: false
+  BeforeWhile: false
+  IndentBraces: false
+  SplitEmptyFunction: false
+  SplitEmptyNamespace: false
+  SplitEmptyRecord: false
+BreakBeforeConceptDeclarations: Always # Never | Allowed | Always
+BreakBeforeInlineASMColon: Always # Never | OnlyMultiline | Always
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: AfterColon # BeforeColon | BeforeComma | AfterColon
+BreakInheritanceList: AfterComma # BeforeColon | BeforeComma | AfterColon | AfterComma
+BreakStringLiterals: true
+BreakTemplateDeclarations: Yes # Leave | No | MultiLine | Yes
+ColumnLimit: 80
+CompactNamespaces: true
+ConstructorInitializerIndentWidth: 2
+ContinuationIndentWidth: 2
+Cpp11BracedListStyle: false
+DisableFormat: false
+EmptyLineAfterAccessModifier: Never # Never | Leave | Always
+EmptyLineBeforeAccessModifier: LogicalBlock # Never | Leave | LogicalBlock | Always
+FixNamespaceComments: true
+IncludeBlocks: Regroup # Preserve | Merge | Regroup
+IndentAccessModifiers: false
+IndentCaseBlocks: false
+IndentCaseLabels: true
+IndentExternBlock: Indent # AfterExternBlock | NoIndent | Indent
+IndentGotoLabels: true
+IndentPPDirectives: None # None | AfterHash | BeforeHash
+IndentRequiresClause: true
+IndentWidth: 2
+IndentWrappedFunctionNames: true
+InsertNewlineAtEOF: true
+KeepEmptyLinesAtTheStartOfBlocks: false
+LambdaBodyIndentation: Signature # Signature | OuterScope
+LineEnding: LF # LF | CRLF | DeriveLF | DeriveCRLF
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: All # None | Inner | All
+PackConstructorInitializers: CurrentLine # Never | BinPack | CurrentLine | NextLine | NextLineOnly
+PointerAlignment: Right # Left | Right | Middle
+ReferenceAlignment: Right # Pointer | Left | Right | Middle
+ReflowComments: true
+RequiresClausePosition: OwnLine # OwnLine | OwnLineWithBrace | WithPreceding | WithFollowing | SingleLine
+SeparateDefinitionBlocks: Always # Leave | Always | Never
+ShortNamespaceLines: 1
+SortIncludes: CaseSensitive # Never | CaseSensitive | CaseInsensitive
+SortUsingDeclarations: true
+SpaceAfterCStyleCast: true
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: true
+SpaceAroundPointerQualifiers: After # Default | Before | After | Both
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: true
+SpaceBeforeCpp11BracedList: true
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: Custom # Never | ControlStatements | ControlStatementsExceptControlMacros | NonEmptyParentheses | Always | Custom
+SpaceBeforeParensOptions:
+  AfterControlStatements: true
+  AfterForeachMacros: true
+  AfterFunctionDeclarationName: false
+  AfterFunctionDefinitionName: false
+  AfterIfMacros: true
+  AfterOverloadedOperator: true
+  AfterRequiresInClause: true
+  AfterRequiresInExpression: true
+  BeforeNonEmptyParentheses: false
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: true
+SpaceInEmptyParentheses: true
+SpacesBeforeTrailingComments: 1
+SpacesInAngles: Always # Never | Always | Leave
+SpacesInCStyleCastParentheses: true
+SpacesInConditionalStatement: true
+SpacesInContainerLiterals: true
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: 1
+SpacesInParentheses: true
+SpacesInSquareBrackets: true

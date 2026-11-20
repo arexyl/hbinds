@@ -51,8 +51,12 @@
  * calls back, raises a Java exception, or unwinds. San's own code takes no
  * lock; san_output_copy may wait briefly for a lock inside the Android bitmap
  * functions, which the render thread also takes. The caller serializes every
- * call on one engine, except san_job_cancel, which follows its own rules.
- * Version 0 has one execution profile, the caller's thread with no codec
+ * call on one engine, except san_job_cancel, which follows its own rules. A
+ * call that takes a handle counts as a call on the live engine of the process,
+ * whatever engine issued the handle: San finds the handle of a content, a job,
+ * or a lease of a completed engine invalid only after it reads the state of
+ * the live engine. An engine handle of a completed engine fails without that
+ * read. Version 0 has one execution profile, the caller's thread with no codec
  * threads, and one pixel profile, which san_output_copy defines.
  *
  * Coordinates. Image coordinates are those of the image as displayed, after
@@ -169,7 +173,9 @@ san_status san_binding_establish( int32_t abi_version );
  * The limits of one engine, each named and in its unit. Hakusan selects every
  * value; San has no defaults. Each limit applies on its own and within the
  * aggregate budget, which counts a block once however many limits count it.
- * San checks no relation between two limits.
+ * San checks no relation between two limits. Each count limit, which is
+ * content_count, job_count, or output_lease_count, is at most 65535, because
+ * a handle names no more contents, jobs, or leases than that.
  */
 typedef struct san_engine_limits {
   /* The aggregate budget of every native resource of the engine, in bytes. */
@@ -222,8 +228,9 @@ typedef struct san_engine_limits {
  * shutdown completes. Creation may run on any thread. Returns:
  * - SAN_STATUS_OK;
  * - SAN_STATUS_BINDING_MISMATCH before the binding is established;
- * - SAN_STATUS_BUDGET_EXCEEDED when a limit is below 1, when the limits
- *   cannot admit the engine's own state, and while another engine is live;
+ * - SAN_STATUS_BUDGET_EXCEEDED when a limit is below 1, when a count limit
+ *   exceeds 65535, when the limits cannot admit the engine's own state, and
+ *   while another engine is live;
  * - SAN_STATUS_ALLOCATION_FAILED or SAN_STATUS_ENGINE_FAILURE.
  */
 san_status san_engine_create( const san_engine_limits *limits,

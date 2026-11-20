@@ -21,11 +21,13 @@ import android.graphics.Bitmap
  * constant and every JNI name and descriptor.
  *
  * Call [bindingEstablish] before any other function. The caller serializes
- * every call on one engine, except [jobCancel], which follows its own rules. No
- * function waits for input, budget, or a consumer, calls back, or throws for an
- * engine outcome; each returns a status. [outputCopy] may wait briefly for a
- * lock inside the Android bitmap functions. No function carries `@FastNative`
- * or `@CriticalNative`, because a step may decode for milliseconds.
+ * every call on one engine, except [jobCancel], which follows its own rules. A
+ * call that takes a handle counts as a call on the live engine of the process,
+ * whatever engine issued the handle. No function waits for input, budget, or a
+ * consumer, calls back, or throws for an engine outcome; each returns a status.
+ * [outputCopy] may wait briefly for a lock inside the Android bitmap functions.
+ * No function carries `@FastNative` or `@CriticalNative`, because a step may
+ * decode for milliseconds.
  */
 internal object SanAbi {
   /** The ABI version. Hakusan and San must use the same value. */
@@ -196,9 +198,10 @@ internal object SanAbi {
   @JvmStatic external fun bindingEstablish(abiVersion: Int): Int
 
   /**
-   * Creates an engine under the named limits, each at least 1, in the field
-   * order of `san_engine_limits`. Writes the new handle, or [NO_HANDLE] on
-   * failure, to `engineOut[0]`. [engineOut] holds exactly one element.
+   * Creates an engine under the named limits, each at least 1 and each count
+   * limit at most 65535, in the field order of `san_engine_limits`. Writes the
+   * new handle, or [NO_HANDLE] on failure, to `engineOut[0]`. [engineOut] holds
+   * exactly one element.
    */
   @JvmStatic
   external fun engineCreate(

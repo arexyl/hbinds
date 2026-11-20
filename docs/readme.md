@@ -17,7 +17,7 @@ The submodule pointer selects the ABI version that a project builds against. Mov
 ## Layout
 
 - `include/san.h` is the C header. It defines the ABI and is the authority.
-- `kotlin/` holds the Kotlin declarations of the JNI surface, which Hakusan compiles.
+- `kotlin/` holds the Kotlin declarations of the JNI surface, which Hakusan compiles. They use JNI primitives and primitive arrays, except one `android.graphics.Bitmap` parameter of the copy operation.
 - `abi.tsv` is the cross-check table that both projects test against. Its constants and layouts come from the header, and its JNI method names and descriptors come from the Kotlin declarations.
 
 Change the header, the declarations, and the table together. `SAN_ABI_VERSION` names the ABI version, and Hakusan and San must agree on it exactly. A mismatch is reported before any engine exists.
@@ -45,6 +45,7 @@ Change the header, the declarations, and the table together. `SAN_ABI_VERSION` n
   - every integer typedef has `type`, `size`, and `align` rows, every struct has `size` and `align` rows, and each of its fields has `type` and `offset` rows;
   - every constant of the Kotlin declarations has an `i32` or `i64` row, and every such row names one;
   - every native method of the Kotlin declarations has a `jni` row, and every `jni` row names one.
+- A report that travels as a long array has an `i32` row `SAN_<REPORT>_LENGTH` and one `i32` row `SAN_<REPORT>_<ELEMENT>` for each element. The element rows hold the values from 0 to the length minus one, each once, and no other macro starts with `SAN_<REPORT>_`. Only the length macro of such a report ends in `_LENGTH`.
 - Function prototypes have no row kind. Each project checks them against the header directly.
 
 ## License

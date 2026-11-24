@@ -269,19 +269,22 @@ san_status san_engine_shutdown( san_handle engine );
 #define SAN_ENGINE_COUNTERS_INPUT_BYTES 4
 /* The live bytes of native metadata and bookkeeping. */
 #define SAN_ENGINE_COUNTERS_METADATA_BYTES 5
-/*
- * The live bytes of output leases and conversion intermediates. The rest of
- * the live bytes is codec state and workspace.
- */
+/* The live bytes of output leases and conversion intermediates. */
 #define SAN_ENGINE_COUNTERS_OUTPUT_BYTES 6
+/*
+ * The live bytes of the one block that the engine keeps, once the last claim
+ * on an output lease has ended, for its next output lease. No lease holds
+ * them. The rest of the live bytes is codec state and workspace.
+ */
+#define SAN_ENGINE_COUNTERS_KEPT_BYTES 7
 /* The live contents. */
-#define SAN_ENGINE_COUNTERS_CONTENT_COUNT 7
+#define SAN_ENGINE_COUNTERS_CONTENT_COUNT 8
 /* The owned jobs. */
-#define SAN_ENGINE_COUNTERS_JOB_COUNT 8
+#define SAN_ENGINE_COUNTERS_JOB_COUNT 9
 /* The live output leases. */
-#define SAN_ENGINE_COUNTERS_LEASE_COUNT 9
+#define SAN_ENGINE_COUNTERS_LEASE_COUNT 10
 /* The number of elements of the counters report. */
-#define SAN_ENGINE_COUNTERS_LENGTH 10
+#define SAN_ENGINE_COUNTERS_LENGTH 11
 
 /*
  * Writes the counters of an engine to counters, which points to

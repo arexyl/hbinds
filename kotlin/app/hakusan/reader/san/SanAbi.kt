@@ -126,17 +126,20 @@ internal object SanAbi {
   /** Counters: the live bytes of output leases and intermediates. */
   const val ENGINE_COUNTERS_OUTPUT_BYTES: Int = 6
 
+  /** Counters: the live bytes of the block kept for the next output lease. */
+  const val ENGINE_COUNTERS_KEPT_BYTES: Int = 7
+
   /** Counters: the live contents. */
-  const val ENGINE_COUNTERS_CONTENT_COUNT: Int = 7
+  const val ENGINE_COUNTERS_CONTENT_COUNT: Int = 8
 
   /** Counters: the owned jobs. */
-  const val ENGINE_COUNTERS_JOB_COUNT: Int = 8
+  const val ENGINE_COUNTERS_JOB_COUNT: Int = 9
 
   /** Counters: the live output leases. */
-  const val ENGINE_COUNTERS_LEASE_COUNT: Int = 9
+  const val ENGINE_COUNTERS_LEASE_COUNT: Int = 10
 
   /** The number of elements of the counters report. */
-  const val ENGINE_COUNTERS_LENGTH: Int = 10
+  const val ENGINE_COUNTERS_LENGTH: Int = 11
 
   /** Report: the output lease from the first publication on, or none. */
   const val JOB_REPORT_LEASE: Int = 0
